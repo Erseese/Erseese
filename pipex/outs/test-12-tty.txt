@@ -1,0 +1,43 @@
+==78382== Memcheck, a memory error detector
+==78382== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==78382== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==78382== Command: ../pipex/pipex assets/deepthought.txt cat not-executable outs/test-12.txt
+==78382== 
+==78382== 
+==78382== HEAP SUMMARY:
+==78382==     in use at exit: 91 bytes in 3 blocks
+==78382==   total heap usage: 17 allocs, 14 frees, 559 bytes allocated
+==78382== 
+==78382== 15 bytes in 1 blocks are indirectly lost in loss record 1 of 3
+==78382==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==78382==    by 0x401D91: malloc_word (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x401C56: insert_words (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x401A68: ft_split (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x40127C: exec (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4013C3: pere (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4015DE: main (in /home/ytouihar/Documents/pipex/pipex)
+==78382== 
+==78382== 31 (16 direct, 15 indirect) bytes in 1 blocks are definitely lost in loss record 2 of 3
+==78382==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==78382==    by 0x401A3B: ft_split (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x40127C: exec (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4013C3: pere (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4015DE: main (in /home/ytouihar/Documents/pipex/pipex)
+==78382== 
+==78382== 60 bytes in 1 blocks are definitely lost in loss record 3 of 3
+==78382==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==78382==    by 0x401861: ft_strjoin (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x401757: createpath (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4012AA: exec (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4013C3: pere (in /home/ytouihar/Documents/pipex/pipex)
+==78382==    by 0x4015DE: main (in /home/ytouihar/Documents/pipex/pipex)
+==78382== 
+==78382== LEAK SUMMARY:
+==78382==    definitely lost: 76 bytes in 2 blocks
+==78382==    indirectly lost: 15 bytes in 1 blocks
+==78382==      possibly lost: 0 bytes in 0 blocks
+==78382==    still reachable: 0 bytes in 0 blocks
+==78382==         suppressed: 0 bytes in 0 blocks
+==78382== 
+==78382== For lists of detected and suppressed errors, rerun with: -s
+==78382== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

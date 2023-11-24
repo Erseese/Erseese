@@ -1,0 +1,11 @@
+make: Entering directory '/home/ytouihar/Documents/pipex'
+make all -C libft_modif
+make[1]: Entering directory '/home/ytouihar/Documents/pipex/libft_modif'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/ytouihar/Documents/pipex/libft_modif'
+make all -C ft_printf
+make[1]: Entering directory '/home/ytouihar/Documents/pipex/ft_printf'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/ytouihar/Documents/pipex/ft_printf'
+cc -Wall -Wextra -Werror pipex.c pipex_utils.c libft_modif/libft.a ft_printf/libftprintf.a -o pipex
+make: Leaving directory '/home/ytouihar/Documents/pipex'

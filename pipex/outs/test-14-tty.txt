@@ -1,0 +1,5 @@
+==78398== Memcheck, a memory error detector
+==78398== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==78398== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==78398== Command: ../pipex/pipex /dev/null env_var cat outs/test-14.txt
+==78398== 
