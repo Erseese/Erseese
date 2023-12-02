@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 12:40:29 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/16 12:43:35 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 10:26:12 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	rrotate(t_tri **stack)
 void	rra(t_tri **a)
 {
 	rrotate(a);
-	ft_putstr_fd("ra\n", 1);
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_tri **b)
 {
 	rrotate(b);
-	ft_putstr_fd("rb\n", 1);
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_tri **a, t_tri **b)

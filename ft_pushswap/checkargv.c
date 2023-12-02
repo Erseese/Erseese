@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 15:31:49 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 18:23:27 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 10:50:18 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,27 @@ int	checkargv(char **argv, int argc)
 {
 	int	i;
 	int	j;
+	int	w;
 
-	i = 1;
-	while (i < argc - 1)
+	i = 0;
+	w = 0;
+	while (++i < argc)
 	{
-		j = i + 1;
-		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
+		j = i;
+		if (ft_atoi2(argv[i]) > INT_MAX || ft_atoi2(argv[i]) < INT_MIN)
 			return (ft_putstr_fd("Error\n", 2));
-		if (!ft_isdigit(argv[i]))
-			return (ft_putstr_fd("Error\n", 2));
-		while (j < argc - 1)
-		{
+		while (++j < argc - 1)
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (ft_putstr_fd("Error\n", 2));
-			j++;
+		if (argv[i][0] == '-' && argv[i][1] != '\0')
+		{
+			argv[i]++;
+			w = 1;
 		}
-		i++;
+		if (!ft_isdigit(argv[i]))
+			return (ft_putstr_fd("Error\n", 2));
+		if (--w == 0)
+			argv[i]--;
 	}
 	return (1);
 }

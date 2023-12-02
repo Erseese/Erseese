@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 12:57:33 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 17:59:09 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:50:15 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,31 @@ int	ft_putstr_fd(char *s, int fd)
 	while (s[i])
 		write(fd, &s[i++], 1);
 	return (0);
+}
+
+long long int	ft_atoi2(const char *nptr)
+{
+	int				i;
+	int				negatif;
+	long long int	res;
+
+	i = 0;
+	res = 0;
+	negatif = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			negatif = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10 + (nptr[i] - 48);
+		i++;
+	}
+	return (res * negatif);
 }
 
 int	ft_atoi(const char *nptr)

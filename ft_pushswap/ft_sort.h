@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:24:59 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 18:20:29 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:19:20 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
+
+typedef long long int	t_cc;
+
+typedef struct s_get
+{
+	char			*content;
+	int				index;
+	struct s_get	*next;
+}				t_get;
 
 typedef struct s_tri
 {
@@ -30,18 +39,19 @@ typedef struct s_tri
 }			t_tri;
 
 /* part 1 initialisation :D*/
-int	ft_putstr_fd(char *s, int fd);
+int		ft_putstr_fd(char *s, int fd);
 void	add_end(t_tri **test, t_tri *new);//done
 t_tri	*initstack(int content);//done
 int		taille(t_tri *start);//done
 int		ft_atoi(const char *nptr);
+t_cc	ft_atoi2(const char *nptr);
 t_tri	*fillstack(char **argv);//done
 void	indexer(t_tri *atack, int taille);
 t_tri	*go_end_minus_1(t_tri *end);
 t_tri	*go_end(t_tri *end);
 
 /* all command (part2)*/
-int	checkargv(char **argv, int argc);
+int		checkargv(char **argv, int argc);
 void	swap(t_tri *stack);
 void	sa(t_tri **a);
 void	sb(t_tri **b);
@@ -85,5 +95,6 @@ int		nb_abs(int nb);
 void	free_stack(t_tri **stack);
 int		get_target(t_tri **stacka, int stackb_index, int tindex, int tpos);
 void	echange(int *v, t_tri **changed, t_tri **ptr, t_tri *atack);
+void	sorting(t_tri **stacka, t_tri **stackb);
 
 #endif

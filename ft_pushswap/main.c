@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:25:33 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 18:27:37 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 18:40:17 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,19 @@ int	main(int argc, char **argv)
 
 	if (argc <= 1)
 	{
-		write(2, "ERROR\n", 5);
+		write(2, "Error\n", 6);
 		return (0);
 	}
-	if (checkargv(argv) == 0)
+	if (checkargv(argv, argc) != 1)
 		return (0);
 	stacka = fillstack(argv);
 	stackb = NULL;
 	indexer(stacka, taille(stacka));
-	if (taille(stacka) == 1)
-		return (0);
-	else if (taille(stacka) == 2 && !check(stacka))
+	if (taille(stacka) == 2 && !check(stacka))
 		sa(&stacka);
 	else if (taille(stacka) == 3 && !check(stacka))
 		tritrois(&stacka);
-	else if (!check(stacka))
+	else if (taille(stacka) > 3 && !check(stacka))
 		sorting(&stacka, &stackb);
 	free_stack(&stacka);
 	free_stack(&stackb);
