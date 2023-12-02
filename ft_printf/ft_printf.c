@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:33:20 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/20 08:56:56 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 17:59:42 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ int	choix_fonct(va_list ptr, const char *d)
 int	ft_printf(const char *d, ...)
 {
 	va_list	ptr;
-	int		res;
 	int		len;
 
 	len = 0;
-	res = 0;
+	if (d == NULL)
+		return (0);
 	va_start(ptr, d);
 	while (*d)
 	{
 		if (*d == '%')
 		{
 			len += choix_fonct(ptr, d);
-			if (res == -1)
+			if (len == -1)
 				return (0);
 			d += 2;
 		}
