@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:02:31 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 12:58:29 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 09:32:55 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,3 @@ char	*get_next_line(int fd)
 	stat = putstat(stat);
 	return (line);
 }
-/*int	main()
-{
-	int i = open("big.ber", O_RDONLY);
-	char	*buf;
-	//printf("%s", get_next_line(i));
-	while ((buf = get_next_line(i)))
-	{
-		printf("%s", buf);
-		free(buf);
-	}
-	//printf("%s%s",get_next_line(i),get_next_line(i));
-	close(i);
-	return (0);
-}*/

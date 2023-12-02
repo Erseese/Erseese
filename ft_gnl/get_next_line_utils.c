@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:02:43 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 12:52:54 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/01 09:28:59 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_charset(char *i)
 	return (0);
 }
 
-char	*test(char	*dst)
+static char	*test(char	*dst)
 {
 	dst = (char *)malloc(1 * sizeof(char));
 	dst[0] = '\0';

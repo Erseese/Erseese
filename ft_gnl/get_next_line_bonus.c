@@ -6,11 +6,11 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:02:31 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 13:08:13 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/02 11:24:23 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static int	count(char *strr)
 {
@@ -118,17 +118,3 @@ char	*get_next_line(int fd)
 	stat[fd] = putstat(stat[fd]);
 	return (line);
 }
-/*int	main()
-{
-	int i = open("big.ber", O_RDONLY);
-	char	*buf;
-	//printf("%s", get_next_line(i));
-	while ((buf = get_next_line(i)))
-	{
-		printf("%s", buf);
-		free(buf);
-	}
-	//printf("%s%s",get_next_line(i),get_next_line(i));
-	close(i);
-	return (0);
-}*/
