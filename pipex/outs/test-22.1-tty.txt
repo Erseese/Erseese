@@ -1,5 +1,0 @@
-==78483== Memcheck, a memory error detector
-==78483== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==78483== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==78483== Command: ../pipex/pipex assets/deepthought.txt wc\ -w cat outs/test-22.txt
-==78483== 
