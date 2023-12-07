@@ -6,15 +6,11 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:50:50 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 16:36:51 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:09:20 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-
-Contact::Contact()
-{
-}
 
 void Contact::fill_firstname(void)
 {

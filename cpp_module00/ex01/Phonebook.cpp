@@ -6,19 +6,16 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:22:31 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 16:41:30 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:08:41 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
 
-Phonebook::Phonebook()
-{
-}
 
 int	Phonebook::isnum(const std::string &str)
 {
-	return (std::all_of(str.begin(), str.end(), ::isdigit));
+	return (std::find_if(str.begin(), str.end(), std::not1(std::ptr_fun(::isdigit))) == str.end());
 }
 
 void	Phonebook::fillcontact(int index, int nmbrdeadd)

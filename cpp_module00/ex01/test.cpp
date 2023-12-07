@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:19:40 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 16:33:58 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:09:28 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(void)
 			tfullest.search();
 		}
 		std::cin.clear(std::cin.goodbit);
-		clearerr(stdin);
+		//clearerr(std::cin);
 	}
 	return 0;
 }
