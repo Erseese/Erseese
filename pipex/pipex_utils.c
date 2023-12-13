@@ -6,11 +6,24 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:09:05 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/24 15:52:48 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:16:49 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "pipex.h"
+
+int	msg(char *err)
+{
+	write(2, err, ft_strlen(err));
+	return (1);
+}
+
+void	errorfunction(char *yey)
+{
+	perror(yey);
+	exit (1);
+}
 
 char	*find_env(char **envp)
 {
@@ -47,5 +60,21 @@ char	*createpath(t_piex piex)
 		i++;
 		free(res);
 	}
-	return (0);
+	return (NULL);
+}
+
+void	free_env(t_piex *piex)
+{
+	int	i;
+
+	close(piex->av1);
+	close(piex->av4);
+	free(piex->fpath);
+	i = 0;
+	while (piex->paths[i] != NULL)
+	{
+		free(piex->paths[i]);
+		i++;
+	}
+	free(piex->paths);
 }

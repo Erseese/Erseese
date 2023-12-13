@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 08:41:04 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/24 14:26:19 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:15:54 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_piex
 {
 	int		pipefd[2];
 	pid_t	fork;
+	pid_t	forkt;
 	int		av1;
 	int		av4;
 	char	**paths;
@@ -39,5 +40,8 @@ typedef struct s_piex
 
 char	*find_env(char **envp);
 char	*createpath(t_piex piex);
+void	free_env(t_piex *piex);
+void	errorfunction(char *yey);
+int		msg(char *err);
 
 #endif

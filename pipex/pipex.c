@@ -6,33 +6,20 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:51:17 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/24 16:01:43 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:16:34 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-
-int	msg(char *err)
-{
-	write(2, err, ft_strlen(err));
-	return (1);
-}
-
-void	errorfunction(char *yey)
-{
-	perror(yey);
-	exit (1);
-}
-
-void	exec(char *argv, char **env, t_piex piex)
+void	exec(char *cmd, char **env, t_piex piex)
 {
 	int	i;
 
 	i = 0;
-	piex.command = ft_split(argv, ' ');
+	piex.command = ft_split(cmd, ' ');
 	piex.nicecommand = createpath(piex);
-	if (piex.nicecommand == NULL)
+	if (!piex.nicecommand)
 	{	
 		while (piex.command[i] != NULL)
 		{
@@ -52,7 +39,7 @@ void	pere(char **argv, t_piex piex, char **env)
 	close(piex.pipefd[1]);
 	dup2(piex.av4, STDOUT_FILENO);
 	exec(argv[3], env, piex);
-	close(piex.pipefd[0]);
+	execve(piex.nicecommand, piex.command, env);
 }
 
 void	open_fils(char **argv, t_piex piex, char **env)
@@ -61,41 +48,40 @@ void	open_fils(char **argv, t_piex piex, char **env)
 	close(piex.pipefd[0]);
 	dup2(piex.av1, STDIN_FILENO);
 	exec(argv[2], env, piex);
-	close(piex.pipefd[1]);
+	execve(piex.nicecommand, piex.command, env);
+}
+
+void	create_open(t_piex *piex, char **argv)
+{
+	piex->av1 = open(argv[1], O_RDONLY);
+	if (piex->av1 < 0)
+		errorfunction("Infile");
+	piex->av4 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0000644);
+	if (piex->av4 < 0)
+		errorfunction("Outfile");
 }
 
 int	main(int argc, char **argv, char **env)
 {
 	t_piex	piex;
-	int		i;
 
 	if (argc != 5)
 		errorfunction("Invalid number of arguments.\n");
-	piex.av1 = open(argv[1], O_RDONLY);
-	if (piex.av1 < 0)
-		errorfunction("Infile");
-	piex.av4 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0000644);
-	if (piex.av4 < 0)
-		errorfunction("Outfile");
+	create_open(&piex, argv);
 	if (pipe(piex.pipefd) < 0)
 		errorfunction("Pipe");
-	piex.fork = fork();
-	if (piex.fork == -1)
-		errorfunction("Fork");
 	piex.fpath = find_env(env);
 	piex.paths = ft_split(piex.fpath, ':');
+	piex.fork = fork();
 	if (piex.fork == 0)
 		open_fils(argv, piex, env);
+	piex.forkt = fork();
+	if (piex.forkt == 0)
+		pere(argv, piex, env);
+	close(piex.pipefd[0]);
+	close(piex.pipefd[1]);
 	waitpid(piex.fork, NULL, 0);
-	pere(argv, piex, env);
-	close(piex.av1);
-	close(piex.av4);
-	free(piex.fpath);
-	i = 0;
-	while (piex.paths[i] != NULL)
-	{
-		free(piex.paths[i]);
-		i++;
-	}
-	free(piex.paths);
+	waitpid(piex.forkt, NULL, 0);
+	free_env(&piex);
+	return (0);
 }
