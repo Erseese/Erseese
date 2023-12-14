@@ -75,6 +75,8 @@ int	parsing(t_map *check)
 	}
 	check_map_value(check);
 	check_collectibles(check->maptemp, check);
+	if (check->collectibles < 1)
+		functionerror("manque un collectible", check);
 	return (1);
 }
 
