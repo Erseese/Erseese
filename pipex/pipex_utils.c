@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:09:05 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/13 11:16:49 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:26:07 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	errorfunction(char *yey)
 	exit (1);
 }
 
-char	*find_env(char **envp)
+char	*find_path(char **envp)
 {
 	int		i;
 	char	*path;
@@ -43,7 +43,7 @@ char	*find_env(char **envp)
 	return (0);
 }
 
-char	*createpath(t_piex piex)
+char	*check_path(t_piex piex)
 {
 	char	*res;
 	int		i;

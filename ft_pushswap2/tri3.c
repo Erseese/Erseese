@@ -6,24 +6,24 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:16:35 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/16 13:38:23 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:52:35 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sort.h"
 
-void	push_all_save_three(t_tri **stack_a, t_tri **stack_b)
+void	push_low_half(t_tri **stack_a, t_tri **stack_b)
 {
-	int	stack_size;
+	int	stack_t;
 	int	pushed;
 	int	i;
 
-	stack_size = taille(*stack_a);
+	stack_t = taille(*stack_a);
 	pushed = 0;
 	i = 0;
-	while (stack_size > 6 && i < stack_size && pushed < stack_size / 2)
+	while (i < stack_t && pushed < stack_t / 2)
 	{
-		if ((*stack_a)->index <= stack_size / 2)
+		if ((*stack_a)->index <= stack_t / 2)
 		{
 			pb(stack_a, stack_b);
 			pushed++;
@@ -32,56 +32,65 @@ void	push_all_save_three(t_tri **stack_a, t_tri **stack_b)
 			ra(stack_a);
 		i++;
 	}
-	while (stack_size - pushed > 3)
+}
+
+void	push_big_half(t_tri **stacka, t_tri **stackb)
+{
+	int	stack_t;
+	int	pushed;
+
+	stack_t = taille(*stacka);
+	pushed = 0;
+	while (stack_t - pushed > 3)
 	{
-		pb(stack_a, stack_b);
+		pb(stacka, stackb);
 		pushed++;
 	}
 }
 
-int	get_lowest_index_position(t_tri **stack)
+int	find_lowest(t_tri **stack)
 {
-	t_tri	*tmp;
+	t_tri	*stacka;
 	int		lowest_index;
 	int		lowest_position;
 
-	tmp = *stack;
-	lowest_index = 2147483647;
+	stacka = *stack;
+	lowest_index = INT_MAX;
 	get_position(stack);
-	lowest_position = tmp->position;
-	while (tmp)
+	lowest_position = stacka->position;
+	while (stacka)
 	{
-		if (tmp->index < lowest_index)
+		if (stacka->index < lowest_index)
 		{
-			lowest_index = tmp->index;
-			lowest_position = tmp->position;
+			lowest_index = stacka->index;
+			lowest_position = stacka->position;
 		}
-		tmp = tmp->head;
+		stacka = stacka->head;
 	}
 	return (lowest_position);
 }
 
-void	shift_tri(t_tri **stack_a)
+void	replacing(t_tri **stack_a)
 {
-	int	lowest_position;
-	int	stack_size;
+	int	low_nbr;
+	int	taille_s;
 
-	stack_size = taille(*stack_a);
-	lowest_position = get_lowest_index_position(stack_a);
-	if (lowest_position > stack_size / 2)
+	taille_s = taille(*stack_a);
+	low_nbr = find_lowest(stack_a);
+	if (low_nbr > taille_s / 2)
 	{
-		while (lowest_position < stack_size)
+		while (low_nbr < taille_s)
 		{
 			rra(stack_a);
-			lowest_position++;
+			low_nbr++;
 		}
 	}
 	else
 	{
-		while (lowest_position > 0)
+		while (low_nbr > 0)
 		{
 			ra(stack_a);
-			lowest_position--;
+			low_nbr--;
 		}
 	}
 }

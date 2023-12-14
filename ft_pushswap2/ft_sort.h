@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:24:59 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/01 12:19:20 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:12:02 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,21 @@ void	tritrois(t_tri **stack);
 void	writelst(t_tri *stack);
 void	get_position(t_tri **stack);
 //void	get_target(t_tri **stacka, t_tri **stackb);
-void	get_target_pos(t_tri **stacka, t_tri **stackb);
+void	init_target_pos(t_tri **stacka, t_tri **stackb);
 int		writelstpostarg(t_tri *stack);
 void	dsasort(t_tri **stacka, t_tri **stackb);
-void	shift_tri(t_tri **stack_a);
-void	push_all_save_three(t_tri **stack_a, t_tri **stack_b);
-void	get_cheapest(t_tri **stacka, t_tri **stackb);
-void	do_move(t_tri **stacka, t_tri **stackb, int couta, int coutb);
-void	rev_rotaboth(t_tri **stacka, t_tri **stackb, int *couta, int *coutb);
+void	replacing(t_tri **stack_a);
+void	push_low_half(t_tri **stack_a, t_tri **stack_b);
+void	push_big_half(t_tri **stacka, t_tri **stackb);
+t_tri	*find_cheapest(t_tri **stackb);
+void	do_move(t_tri **stacka, t_tri **stackb, t_tri *tmp);
+void	rev_rotaboth(t_tri **stacka, t_tri **stackb,t_tri *tmp);
 void	rotastackb(t_tri **stackb, int *coutb);
 void	rotastacka(t_tri **stacka, int *couta);
-void	rotaboth(t_tri **stacka, t_tri **stackb, int *couta, int *coutb);
-void	get_cout(t_tri **stacka, t_tri **stackb);
+void	rotaboth(t_tri **stacka, t_tri **stackb,t_tri *tmp);
+void	init_cout(t_tri **stacka, t_tri **stackb);
 int		is_sorted(t_tri *stack);
-int		get_lowest_index_position(t_tri **stack);
+int		find_lowest(t_tri **stack);
 int		nb_abs(int nb);
 void	free_stack(t_tri **stack);
 int		get_target(t_tri **stacka, int stackb_index, int tindex, int tpos);

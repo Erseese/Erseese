@@ -6,18 +6,17 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:25:33 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/01 18:40:17 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:12:09 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sort.h"
 
-void	get_cheapest(t_tri **stacka, t_tri **stackb)
+t_tri	*find_cheapest(t_tri **stackb)
 {
 	t_tri	*tmp;
+	t_tri	*cheapests;
 	int		cheapest;
-	int		cheapestcouta;
-	int		cheapestcoutb;
 
 	tmp = *stackb;
 	cheapest = 2147483647;
@@ -26,26 +25,37 @@ void	get_cheapest(t_tri **stacka, t_tri **stackb)
 		if (nb_abs(tmp->couta) + nb_abs(tmp->coutb) < (cheapest))
 		{
 			cheapest = nb_abs(tmp->coutb) + nb_abs(tmp->couta);
-			cheapestcouta = tmp->couta;
-			cheapestcoutb = tmp->coutb;
+			cheapests = tmp;
 		}
 		tmp = tmp->head;
 	}
-	do_move(stacka, stackb, cheapestcouta, cheapestcoutb);
+	return (cheapests);
 }
 
 void	sorting(t_tri **stacka, t_tri **stackb)
 {
-	push_all_save_three(stacka, stackb);
+	t_tri	*cheapest;
+
+	if (taille(*stacka) > 5)
+	{
+		push_low_half(stacka, stackb);
+		push_big_half(stacka, stackb);
+	}
+	else
+	{
+		pb(stacka, stackb);
+		pb(stacka, stackb);
+	}
 	tritrois(stacka);
 	while (*stackb)
 	{
-		get_target_pos(stacka, stackb);
-		get_cout(stacka, stackb);
-		get_cheapest(stacka, stackb);
+		init_target_pos(stacka, stackb);
+		init_cout(stacka, stackb);
+		cheapest = find_cheapest(stackb);
+		do_move(stacka, stackb, cheapest);
 	}
 	if (!check(*stacka))
-		shift_tri(stacka);
+		replacing(stacka);
 }
 
 void	writelst(t_tri *stack)

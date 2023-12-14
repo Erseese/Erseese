@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 12:46:48 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/28 12:28:04 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:09:35 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	indexer(t_tri *atack, int taille)
 	}
 }
 
-void	get_cout(t_tri **stacka, t_tri **stackb)
+void	init_cout(t_tri **stacka, t_tri **stackb)
 {
 	t_tri	*tmpa;
 	t_tri	*tmpb;
@@ -106,7 +106,7 @@ int	get_target(t_tri **stacka, int stackb_index, int tindex, int tpos)
 	return (tpos);
 }
 
-void	get_target_pos(t_tri **stacka, t_tri **stackb)
+void	init_target_pos(t_tri **stacka, t_tri **stackb)
 {
 	t_tri	*tmp2;
 	int		tpos;

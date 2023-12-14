@@ -6,18 +6,18 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:23:01 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/16 13:32:09 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:06:55 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sort.h"
 
-void	rotaboth(t_tri **stacka, t_tri **stackb, int *couta, int *coutb)
+void	rotaboth(t_tri **stacka, t_tri **stackb, t_tri *tmp)
 {
-	while (*couta > 0 && *coutb > 0)
+	while (tmp->couta > 0 && tmp->coutb > 0)
 	{
-		(*couta)--;
-		(*coutb)--;
+		tmp->couta--;
+		tmp->coutb--;
 		rr(stacka, stackb);
 	}
 }
@@ -56,23 +56,23 @@ void	rotastackb(t_tri **stackb, int *coutb)
 	}
 }
 
-void	rev_rotaboth(t_tri **stacka, t_tri **stackb, int *couta, int *coutb)
+void	rev_rotaboth(t_tri **stacka, t_tri **stackb, t_tri *tmp)
 {
-	while (*couta < 0 && *coutb < 0)
+	while (tmp->couta < 0 && tmp->coutb < 0)
 	{
-		(*couta)++;
-		(*coutb)++;
+		tmp->couta++;
+		tmp->coutb++;
 		rrr(stacka, stackb);
 	}
 }
 
-void	do_move(t_tri **stacka, t_tri **stackb, int couta, int coutb)
+void	do_move(t_tri **stacka, t_tri **stackb, t_tri *tmp)
 {
-	if (couta < 0 && coutb < 0)
-		rev_rotaboth(stacka, stackb, &couta, &coutb);
-	if (couta > 0 && coutb > 0)
-		rotaboth(stacka, stackb, &couta, &coutb);
-	rotastacka(stacka, &couta);
-	rotastackb(stackb, &coutb);
+	if (tmp->couta < 0 && tmp->coutb < 0)
+		rev_rotaboth(stacka, stackb, tmp);
+	if (tmp->couta > 0 && tmp->coutb > 0)
+		rotaboth(stacka, stackb, tmp);
+	rotastacka(stacka, &tmp->couta);
+	rotastackb(stackb, &tmp->coutb);
 	pa(stacka, stackb);
 }
