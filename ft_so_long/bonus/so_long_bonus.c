@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:49:46 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 11:52:52 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/02 11:56:39 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int	main(int argc, char **argv)
 	createsprite(&test);
 	mlx_hook(test.mlx_win, KeyRelease, KeyReleaseMask, &on_keypress, &test);
 	mlx_hook(test.mlx_win, DestroyNotify, StructureNotifyMask, &destroy, &test);
+	mlx_string_put(test.mlx_init, test.mlx_win, 0, WINDOWX, 0, "Move : 0");
 	mlx_loop(test.mlx_init);
 	return (0);
 }

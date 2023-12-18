@@ -6,13 +6,13 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:40:53 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 10:29:52 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:14:54 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	everything(t_mlx *data, int	x, int y, int c)
+void	everything(t_mlx *data, int x, int y, int c)
 {
 	if (possible_end(data) == 1)
 		end_prog(data, x, y, c);
@@ -42,4 +42,3 @@ int	on_keypress(int keysym, t_mlx *data)
 	render_chara(data);
 	return (0);
 }
-

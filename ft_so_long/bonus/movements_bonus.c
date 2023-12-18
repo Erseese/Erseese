@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:40:53 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 11:56:54 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:13:45 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	*everything(t_mlx *data, int x, int y, int c)
 	{
 		death(data, c);
 		move_player(data, c);
-		ft_printf("compteur : %d\n", data->compteur);
 		data->compteur++;
+		printf("compteur : %d\n", data->compteur);
 	}
 	if (c == XK_Down)
 		return (data->persod.chara);
@@ -53,6 +53,16 @@ void	death(t_mlx *data, int c)
 	}
 }
 
+void	print_move(t_mlx *data)
+{
+	char	*move;
+
+	move = ft_itoa(data->compteur, 10);
+	mlx_string_put(data->mlx_init, data->mlx_win, 0, WINDOWX, 0, "Move :");
+	mlx_string_put(data->mlx_init, data->mlx_win, 42, WINDOWX, 0, move);
+	free(move);
+}
+
 int	on_keypress(int keysym, t_mlx *data)
 {
 	void	*yes;
@@ -76,5 +86,6 @@ int	on_keypress(int keysym, t_mlx *data)
 		return (0);
 	render_background(data);
 	render_chara(data, yes);
+	print_move(data);
 	return (0);
 }

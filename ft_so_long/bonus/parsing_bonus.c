@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:34:04 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 11:56:45 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:06:55 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,16 @@ void	check_file(char *file, t_map *test)
 	size_t	len;
 
 	ext = ft_strrchr(file, '.');
+	if (ext == 0)
+	{
+		ft_printf("Error\n%s", "Mauvais nom de fichier");
+		free(test);
+		exit(EXIT_FAILURE);
+	}
 	len = ft_strlen(ext);
 	if (len < 4)
 		len = 4;
-	if (!ext || ft_strncmp(ext, ".ber", len) != 0)
+	if (!ext || ft_strncmp(ext, ".ber", len) != 0 || len == 0)
 	{
 		ft_printf("Error\n%s", "Mauvais nom de fichier");
 		free(test);

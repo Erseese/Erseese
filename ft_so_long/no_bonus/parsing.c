@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:34:04 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 10:28:43 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/18 10:43:33 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ void	check_file(char *file, t_map *test)
 	size_t	len;
 
 	ext = ft_strrchr(file, '.');
+	if (ext == 0)
+	{
+		ft_printf("Error\n%s", "Mauvais nom de fichier");
+		free(test);
+		exit(EXIT_FAILURE);
+	}
 	len = ft_strlen(ext);
 	if (len < 4)
 		len = 4;
@@ -101,7 +107,6 @@ t_map	*map_create(char *fichier)
 	t_map	*test;
 
 	test = malloc(sizeof(t_map));
-
 	check_file(fichier, test);
 	initmap(test, fichier);
 	parsing(test);

@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 19:05:43 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 10:53:57 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:08:15 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,14 @@ void	check_collectibles(char **map, t_map *check)
 
 	x = 0;
 	y = 0;
-	while (map[x++][y] != 'P')
+	while (map[x][y] != 'P')
 	{
 		y = 0;
-		while (map[x][y] != 'P' && map[x][y])
+		while (map[x][y] != 'P' && map[x][y] && map[x][y] != '\n')
+		{
+			printf("test\n");
 			y++;
+		}
 		if (map[x][y] != 'P')
 			x++;
 	}

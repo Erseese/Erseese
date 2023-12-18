@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 10:39:23 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 11:47:28 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:14:22 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define WINDOWY 32
 # define RED_PIXEL 0xFF0000
 # define GREENPIXEL 0x00FF00
-
 
 typedef struct s_testmap
 {

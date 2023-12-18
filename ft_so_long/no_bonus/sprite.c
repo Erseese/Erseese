@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:37:23 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/23 10:28:00 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:14:13 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ void	createsprite(t_mlx *test)
 	"sprites/door.xpm", &test->door.x, &test->door.y);
 	test->doorclosed.chara = mlx_xpm_file_to_image(test->mlx_init, \
 	"sprites/doorclosed.xpm", &test->doorclosed.x, &test->doorclosed.y);
-	/*test->perso.charar =
-	test->perso.charal =
-	test->perso.charau =
-	test->perso.charad =
-	test->ennemy.chara = */
 	render_background(test);
 	render_chara(test);
 }
