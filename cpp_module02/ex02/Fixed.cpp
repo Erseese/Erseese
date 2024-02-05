@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:19:29 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/11 19:31:21 by ytouihar         ###   ########.fr       */
+/*   Updated: 2023/12/11 23:11:20 by ersees           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::~Fixed()
 }
 Fixed::Fixed(const Fixed &test)
 {
-	this->_fixedpoint = test.getRawBits();
+	*this = test;
 }
 
 Fixed::Fixed(const float numb)

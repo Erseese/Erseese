@@ -1,0 +1,1 @@
+[philo-Test #5]: Given 2 60 60 60 arguments to philo, the time difference of each death shouldn't be bigger than 10ms !
