@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   control_work.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 11:50:05 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/02/05 23:47:19 by ersees           ###   ########.fr       */
+/*   Created: 2024/02/06 12:33:51 by ytouihar          #+#    #+#             */
+/*   Updated: 2024/02/07 12:11:24 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
-
-void	free_everything(t_global *global)
-{
-	int	n;
-
-	n = 0;
-	while (n < global->numberphilos)
-	{
-		pthread_mutex_destroy(&global->allforks[n]);
-		n++;
-	}
-	pthread_mutex_destroy(&global->eating);
-	pthread_mutex_destroy(&global->writing);
-	pthread_mutex_destroy(&global->dead);
-	free(global->allforks);
-	free(global->philo);
-}
+#include "philo.h"
 
 int	check_maxeat(t_global *check)
 {
@@ -57,7 +40,8 @@ int	is_dead(t_philo *philo)
 	pthread_mutex_lock(philo->dead);
 	pthread_mutex_lock(philo->eating);
 	pthread_mutex_lock(philo->writing);
-	if (get_current_time(philo->time) - philo->timelastmeal > philo->time_to_die)
+	if (get_current_time(philo->time) - \
+	philo->timelastmeal > philo->time_to_die)
 	{
 		pthread_mutex_unlock(philo->writing);
 		pthread_mutex_unlock(philo->eating);
@@ -74,7 +58,7 @@ int	is_dead(t_philo *philo)
 	return (0);
 }
 
-void	*checkdeath(void *arg)
+void	*check_death(void *arg)
 {
 	t_global	*control;
 	int			index;
@@ -100,23 +84,5 @@ void	*checkdeath(void *arg)
 				break ;
 		}
 	}
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	t_global	main_struct;
-
-	if (argc != 5 && argc != 6)
-		return (0);
-	if (checkargv(argv, argc) == 0)
-		return (0);
-	initglobal(&main_struct, argv, argc);
-	initpthread(&main_struct);
-	/*for(int i = 0; ft_atoi(argv[1]) > i; i++)
-	{
-		printf("number %d ate : %d\n", main_struct.philo[i].number, main_struct.philo[i].nbrofmeal);
-	}*/
-	free_everything(&main_struct);
 	return (0);
 }

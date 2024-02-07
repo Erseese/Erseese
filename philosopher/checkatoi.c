@@ -6,16 +6,16 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:09:00 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/28 17:56:48 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:13:39 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "philo.h"
 
 long long int	ft_atoi2(const char *nptr)
 {
-	int	i;
-	int	negatif;
+	int				i;
+	int				negatif;
 	long long int	res;
 
 	i = 0;

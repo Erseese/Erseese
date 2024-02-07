@@ -1,7 +1,7 @@
 NAME = philo
-SRCS = checkargv.c checkatoi.c init.c main.c philoroutine.c randomfunction.c
+SRCS = checkargv.c checkatoi.c init.c main.c philo_work.c philo_utils.c control_work.c
 OBJS = ${SRCS:.c=.o}
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
 INCLUDES = -I.
 CC = cc
 

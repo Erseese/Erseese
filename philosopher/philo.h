@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   philo.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:43:11 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/02/05 23:47:19 by ersees           ###   ########.fr       */
+/*   Updated: 2024/02/06 12:29:12 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <pthread.h>
 # include <stdlib.h>
@@ -55,16 +55,15 @@ typedef struct s_global
 
 int				checkargv(char **argv, int argc);
 int				ft_atoi(const char *nptr);
-void			initglobal(t_global *idk, char **argv, int argc);
+void			init_global(t_global *idk, char **argv, int argc);
 int				ft_putstr_fd(char *s, int fd);
 long long int	ft_atoi2(const char *nptr);
 long			get_current_time(long time);
 int				ft_putstr_fd(char *s, int fd);
-void			initpthread(t_global *idk);
-void			*routinephilo(void *idk);
-//int				ft_usleep(size_t milliseconds);
-void			printeverything(t_philo *philo, char *action);
-void			*checkdeath(void *yey);
+void			start_pthread(t_global *idk);
+void			*work_philo(void *idk);
+void			print_everything(t_philo *philo, char *action);
+void			*check_death(void *yey);
 
 
 #endif

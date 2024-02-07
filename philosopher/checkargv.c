@@ -6,11 +6,11 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:08:19 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/11/30 17:06:16 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:13:23 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "philo.h"
 
 int	ft_putstr_fd(char *s, int fd)
 {
@@ -61,4 +61,3 @@ int	checkargv(char **argv, int argc)
 	}
 	return (1);
 }
-
