@@ -1,0 +1,30 @@
+ALOOOOOOOOORS comment on va coder ca
+
+premiere etape faut cree la heap ou voir si elle existe pour moi ? mais le code du type 
+
+
+code du mec :
+
+au debut il essaie de remplir un des block de la heap
+si il trouve un block libre il return l adresse du block pour trouver son block il va 
+parcourir ses heaps et si il trouve la bonne heap il verifie qu elle soit pas pleine 
+si elle ne l'est pas il divise le dernier block le plus grand et mets pile la place 
+dedans pour acceuillir le nouveau block
+sinon il skip et il va cree une nouvelle hea pqu il va mettre en premier dans les heaps
+et va cree le premier block de cette heap puis il va return l adresse du block
+
+
+
+je dois recoder malloc pense tu que c'est une bonne idée de procéder ainsi ?
+je vais crée trois types un SMALL pour les petits malloc 
+un TINY pour les plus petits mallocs 
+et un LARGE pour les gros malloc
+les types tiny et small devront pouvoir stocker 100 mallocs de taille n et m respectivement afin d'économiser le nombre d'appel a mmap je vais directement allouer a chaque fois que la fonction malloc est utilisée la taille de 100 mallocs petit ou tres petit + les metadonnée :
+pour le type large je vais simplemnet faire un mmap a chaque fois.
+
+Mon code regardera si il existe une heap du bon type 
+Si non il va cree la heap du bon type 
+Il va la chainé avec les autres heap si il l'en existe
+Et directement après avoir créé la heap il va crée 100 blocks de chaque heaps de taille n que je vais chainé
+Et je vais tous les initialiser et leur mettre un int disant si oui ou non cette structure est occupée 
+Et les malloc vont donc prendre les block dispo ou no

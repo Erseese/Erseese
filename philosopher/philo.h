@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_philo
 {
@@ -64,6 +65,6 @@ void			start_pthread(t_global *idk);
 void			*work_philo(void *idk);
 void			print_everything(t_philo *philo, char *action);
 void			*check_death(void *yey);
-
+void			parsing(char **argv);
 
 #endif

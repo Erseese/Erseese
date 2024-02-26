@@ -6,31 +6,72 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:49:14 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/01/26 15:42:35 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/02/07 19:50:34 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/mman.h>
-# include <pthread.h>
-# include <sys/time.h>
-# include <sys/resource.h>
-# include <unistd.h>
+#include "malloc.h"
 
-int	main(void)
+void	rlimitsecurity(void)
 {
+	struct rlimit limit;
 
-	char *test = mmap(NULL, 12, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-	test[123] = 'c';
-	munmap(test);
-	printf("t %s",test);
+	if (getrlimit(RLIMIT_AS, &limit) != 0)
+	{
+		perror("getrlimit");
+		return ;
+	}
+	if (limit.rlim_cur == RLIM_INFINITY)
+		printf("Soft limit on virtual memory: unlimited\n");
+	else
+		printf("Soft limit on virtual memory: %ld bytes\n", (long) limit.rlim_cur);
+	if (limit.rlim_max == RLIM_INFINITY)
+		printf("Hard limit on virtual memory: unlimited\n");
+	else
+		printf("Hard limit on virtual memory: %ld bytes\n", (long) limit.rlim_max);
 }
 
-//void *mmap(void addr[.length], size_t length, int prot, int flags, int fd, off_t offset);
-//mmap(NULL, size + BLOCK_SIZE, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-// if (atoied > 4096)
-// {
-// 	compteur = atoied / pagesize;
-// 	atoied = atoied / (pagesize * compteur);
-// }
+void	*ft_malloc(size_t size)
+{
+	pthread_mutex_lock(&security);
+	size_t			total_malloc;
+	t_heapglobal 	*heap;
+	t_block			*block;
+
+	heap = heap_gestion(size);
+	block = get_block(heap);
+	rlimitsecurity();
+	pthread_mutex_unlock(&security);
+	return ((char *)block + sizeof(t_block));
+}
+
+void ft_free(void *ptr)
+{
+	if (!ptr)
+		return;
+	pthread_mutex_lock(&security);
+	t_block *block_ptr = (t_block *)ptr - 1;
+	block_ptr->free = 1;
+	//munmap((void *)block_ptr, block_ptr->size);
+	pthread_mutex_unlock(&security);
+}
+
+
+int	main(int argc, char **argv)
+{
+	//int pagesize = getpagesize(); 4096
+	char *test;
+	test = ft_malloc(10 * sizeof(char));
+	char *test2;
+	//test2 = ft_malloc(10 * sizeof(char));
+	int n = 0;
+	printf("%d\n",g_heaps->number_heap);
+	while (n < 15)
+	{
+		test[n] = '1'; 
+		n++;
+	}
+	n = 0;
+	printf("test : %s, test2 : %s\n", test, test2);
+	printf("test : %s\n", test);
+}

@@ -6,11 +6,40 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:42:53 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/02/07 12:12:01 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:07:48 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static void	*forking(t_philo *philo)
+{
+	if (philo->number % 2)
+	{
+		pthread_mutex_lock(philo->forkl);
+		print_everything(philo, "FORK");
+		if (philo->nop == 1)
+		{
+			pthread_mutex_unlock(philo->forkl);
+			return (usleep(philo->time_to_die * 1000), NULL);
+		}
+		pthread_mutex_lock(philo->forkr);
+		print_everything(philo, "FORK");
+	}
+	else
+	{
+		pthread_mutex_lock(philo->forkr);
+		print_everything(philo, "FORK");
+		if (philo->nop == 1)
+		{
+			pthread_mutex_unlock(philo->forkr);
+			return (usleep(philo->time_to_die * 1000), NULL);
+		}
+		pthread_mutex_lock(philo->forkl);
+		print_everything(philo, "FORK");
+	}
+	return (NULL);
+}
 
 static void	thinking(t_philo *philo)
 {
@@ -25,16 +54,8 @@ static void	sleeping(t_philo *philo)
 
 static void	eating(t_philo *philo)
 {
-	pthread_mutex_lock(philo->forkl);
-	print_everything(philo, "FORK");
-	if (philo->nop == 1)
-	{
-		pthread_mutex_unlock(philo->forkl);
-		usleep(philo->time_to_die * 1000);
+	if (!forking(philo))
 		return ;
-	}
-	pthread_mutex_lock(philo->forkr);
-	print_everything(philo, "FORK");
 	print_everything(philo, "eating");
 	pthread_mutex_lock(philo->eating);
 	philo->timelastmeal = get_current_time(philo->time);
@@ -50,8 +71,6 @@ void	*work_philo(void *philoso)
 	t_philo	*process;
 
 	process = (t_philo *)philoso;
-	if (process->number % 2 == 1)
-		usleep(process->time_to_eat);
 	pthread_mutex_lock(process->dead);
 	while (*(process->condd_death) == 0)
 	{

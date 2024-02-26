@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:50:05 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/02/07 12:12:45 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:00:26 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 5 && argc != 6)
 		return (0);
-	if (checkargv(argv, argc) == 0)
-		return (0);
+	parsing(argv);
 	init_global(&main_struct, argv, argc);
 	start_pthread(&main_struct);
 	free_everything(&main_struct);
