@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:02:31 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/03/01 19:13:56 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:24:45 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,5 @@ char	**copy_right_with_spaces(char **map, int i, int j);
 int		ft_strlen_matrice(char **map);
 char	**map_copy(char **map);
 int		ft_inisize(t_file *lst);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:45:38 by ytouihar          #+#    #+#             */
-/*   Updated: 2024/03/01 19:13:35 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/03/02 15:24:54 by ytouihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_inisize(t_file *lst)
 	}
 	return (compteur);
 }
-
 
 int	ft_strlen_matrice(char **map)
 {
