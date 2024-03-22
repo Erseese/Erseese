@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:19:40 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 17:09:28 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:06:08 by ersees           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
+#include <cstdio>
 
 int main(void) 
 {
@@ -20,12 +21,15 @@ int main(void)
 	std::string input;
 	while (1)
 	{
-		if (std::cin.eof())
-			std::cin.clear(std::cin.goodbit);
 		std::cout << "Print a command" << std::endl;
 		std::cin >> std::ws;
 		std::getline(std::cin, input);
-		if (input.compare("ADD") == 0)
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			clearerr(stdin);
+		}
+		else if (input.compare("ADD") == 0)
 		{
 			nmbrdeadd++;
 			tfullest.fillcontact(index, nmbrdeadd);
@@ -37,8 +41,9 @@ int main(void)
 		{
 			tfullest.search();
 		}
-		std::cin.clear(std::cin.goodbit);
-		//clearerr(std::cin);
+		std::cin.clear();
+		clearerr(stdin);
 	}
 	return 0;
 }
+

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:50:50 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 17:09:20 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:52:17 by ersees           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void Contact::fill_firstname(void)
 	{
 		std::cout << "First name : \n";
 		std::getline(std::cin, this->first_name);
+		if (std::cin.eof())
+		{
+			std::cin.clear(); // Clear the EOF state
+			clearerr(stdin);
+		}
 	}
 }
 void Contact::fill_lastname(void)
@@ -30,6 +35,11 @@ void Contact::fill_lastname(void)
 	{
 		std::cout << "last name : \n";
 		std::getline(std::cin, this->last_name);
+		if (std::cin.eof())
+		{
+			std::cin.clear(); // Clear the EOF state
+			clearerr(stdin);
+		}
 	}
 }
 void Contact::fill_phonenumber(void)
@@ -40,6 +50,11 @@ void Contact::fill_phonenumber(void)
 	{
 		std::cout << "Phone Number : \n";
 		std::getline(std::cin, this->phone_number);
+		if (std::cin.eof())
+		{
+			std::cin.clear(); // Clear the EOF state
+			clearerr(stdin);
+		}
 	}
 }
 void Contact::fill_nickname(void)
@@ -50,6 +65,11 @@ void Contact::fill_nickname(void)
 	{
 		std::cout << "Nickname : \n";
 		std::getline(std::cin, this->nick_name);
+		if (std::cin.eof())
+		{
+			std::cin.clear(); // Clear the EOF state
+			clearerr(stdin);
+		}
 	}
 }
 void Contact::fill_darkest_secret(void)
@@ -60,6 +80,11 @@ void Contact::fill_darkest_secret(void)
 	{
 		std::cout << "Darkest secret : \n";
 		std::getline(std::cin, this->darkest_secret);
+		if (std::cin.eof())
+		{
+			std::cin.clear(); // Clear the EOF state
+			clearerr(stdin);
+		}
 	}
 }
 void Contact::fill_index(int indexs)

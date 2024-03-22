@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:22:31 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 17:08:41 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:08:37 by ersees           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,27 @@ void	Phonebook::search(void)
 {
 	int inded = 0;
 	std::string input2;
-	std::cout << "contact index : ";
-	std::cin >> input2;
+	while (input2 == "")
+	{
+		std::cout << "Contact index : ";
+		std::getline(std::cin, input2);
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			clearerr(stdin);
+		}
+		std::cout << std::endl;
+	}
 	if (!isnum(input2))
+	{
+		std::cout << "Not a number \n";
 		return ;
+	}
 	if ((std::atoi(input2.c_str()) > 8 || std::atoi(input2.c_str()) < 0) || std::atoi(input2.c_str()) > this->nmbrdeadd)
 	{
-		std::cout << this->nmbrdeadd;
+		std::cout << "there is only " << this->nmbrdeadd << " person in the repertory right now sorry..." << std::endl;
+		std::cin.clear();
+		clearerr(stdin);
 		return ;
 	}
 	std::cout << "Index     " << "|" << "First Name" << "|" << "Last Name " << "|"  << "Nickname " << std::endl;

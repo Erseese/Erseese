@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ytouihar <ytouihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ersees <ersees@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 15:50:53 by ytouihar          #+#    #+#             */
-/*   Updated: 2023/12/07 17:09:11 by ytouihar         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:42:11 by ersees           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iomanip>
+#include <cstdio>
 
 class Contact{
 	private :

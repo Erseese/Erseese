@@ -1,20 +1,17 @@
 NAME = phonebook
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = Contact.cpp test.cpp
+SRCS = Contact.cpp main.cpp Phonebook.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCLUDES = .
 
 all : ${NAME}
 
 .cpp.o :
-	${CC} $(FLAGS) -c -o $@ $< $(INCLUDES)
-
-
+	${CC} $(FLAGS) -c -o $@ $<
 
 ${NAME} : $(OBJS)
-	${CC} ${FLAGS} -o ${NAME} -I $(INCLUDES)
-
+	${CC} ${FLAGS} $(OBJS) -o ${NAME}
 clean :
 	rm -f $(OBJS)
 
